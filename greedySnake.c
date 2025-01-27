@@ -6,7 +6,7 @@
 #define Width 30
 int canvas[High][Width]={0};
 void moveSnakeByDirection();
-int  food_X,food_y;
+int  food_X,food_Y;
 int goods_x,goods_y;
 int life;
 void updateWithoutlnput();
@@ -85,8 +85,8 @@ void startup()
         canvas[High/2][Width/2-i]=i+1;
     }
     food_X=rand()%(High-5)+2;
-    food_y=rand()%(Width-5)+2;
-    canvas[food_X][food_y]=-2;
+    food_Y=rand()%(Width-5)+2;
+    canvas[food_X][food_Y]=-2;
     goods_x=rand()%(High-5)+3;
     goods_y=rand()%(Width-5)+3;
     canvas[goods_x][goods_y]=-3;
@@ -173,12 +173,12 @@ void moveSnakeByDirection(int moveDirection)
             }
     }
     canvas[newHead_i][newHead_j]=1;
-    if (newHead_i==food_X&&newHead_j==food_y)
+    if (newHead_i==food_X&&newHead_j==food_Y)
     {
         
         food_X=rand()%(High-5)+2;
-        food_y=rand()%(Width-5)+2;
-        canvas[food_X][food_y]=-2;
+        food_Y=rand()%(Width-5)+2;
+        canvas[food_X][food_Y]=-2;
     }else if(newHead_i==goods_x&&newHead_j==goods_y){
         life++;
         printf("life=%d",life);
